@@ -14,7 +14,7 @@ function Header() {
     { name: 'News', href: '/news' },
     { name: 'Hotels', href: '/hotels' },
     { name: 'Flights', href: '/flight' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'About', href: '/about' },
   ];
 
   return (

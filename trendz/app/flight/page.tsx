@@ -187,7 +187,7 @@ export default function FlightsPage() {
                 </select>
               </div>
 
-              <div className="md:col-span-6 flex justify-center mt-6">
+              <div className="md:col-span-6 flex justify-center mt-6 z-50">
                 <button className="group bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-black text-xl px-20 py-7 rounded-3xl shadow-2xl hover:shadow-cyan-500/60 hover:scale-105 transition-all duration-500 flex items-center gap-5">
                   <Search className="w-8 h-8" />
                   Search Flights

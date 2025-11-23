@@ -119,14 +119,14 @@ export default function AboutPage() {
       <section className="py-32 bg-gray-900 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-5xl md:text-6xl font-black mb-20">
-            Meet The Visionaries
+            Our vision coverage
           </h2>
 
           <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
             {[
-              { name: "Chidi Okeke", role: "CEO & Founder", loc: "Abuja, Nigeria", img: "/hero1.jpg" },
-              { name: "Amina Yusuf", role: "Editor-in-Chief", loc: "Abuja, Nigeria", img: "/hero2.jpg" },
-              { name: "Tunde Adebayo", role: "CTO", loc: "Abuja, Nigeria", img: "/hero.jpg" },
+              { name: "News", role: "CEO & Founder", loc: "Abuja, Nigeria", img: "/trenz.jpg" },
+              { name: "Flight ", role: "Editor-in-Chief", loc: "Abuja, Nigeria", img: "/hero2.jpg" },
+              { name: "Hotel reservation", role: "CTO", loc: "Abuja, Nigeria", img: "/hero.jpg" },
             ].map((person) => (
               <div key={person.name} className="group">
                 <div className="relative overflow-hidden rounded-3xl">

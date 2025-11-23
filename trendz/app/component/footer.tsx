@@ -5,9 +5,9 @@ import { Facebook, Twitter, Instagram, Youtube, Globe, Mail, Phone } from 'lucid
 
 export default function Footer() {
   return (
-    <footer className="bg-black/90 border-t border-cyan-900/30">
+    <footer className="bg-black/90 border-t border-cyan-900/30 ">
       <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap- gap-12">
+        <div className="flex flex-col md:flex-row justify-around ">
           {/* Brand + Description */}
           <div className="md:col-span-1">
             <Link href="/" className="inline-block mb-6">
@@ -23,7 +23,7 @@ export default function Footer() {
             </p>
 
             <div className="flex gap-4 mt-8">
-              <a href="#" className="text-gray-500 hover:text-cyan-400 transition">
+              <a href="https://x.com/okotochris" className="text-gray-500 hover:text-cyan-400 transition">
                 <Twitter size={20} />
               </a>
               <a href="#" className="text-gray-500 hover:text-cyan-400 transition">
@@ -55,19 +55,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Support */}
-          <div>
-            <h3 className="text-white font-semibold mb-5">Support</h3>
-            <ul className="space-y-3">
-              {['Contact Us', 'Help Center', 'Privacy Policy', 'Terms of Service', 'Careers', 'Press Kit'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-gray-400 hover:text-cyan-400 text-sm transition">
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+         
 
           {/* Contact & Newsletter */}
           <div>
@@ -75,15 +63,15 @@ export default function Footer() {
             <div className="space-y-4 text-sm text-gray-400">
               <p className="flex items-center gap-3">
                 <Mail size={16} className="text-cyan-400" />
-                hello@trendz.app
+                 info@trendz.ng 
               </p>
               <p className="flex items-center gap-3">
                 <Phone size={16} className="text-cyan-400" />
-                +234 800 TRENDZ
+                +234 707 747 6027
               </p>
               <p className="flex items-center gap-3">
                 <Globe size={16} className="text-cyan-400" />
-                Lagos • London • New York
+                Abuja • London • New York
               </p>
             </div>
 
@@ -105,8 +93,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-cyan-900/30 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© 2025 TrendZ. All rights reserved.</p>
-          <p>Made with <span className="text-cyan-400">▲</span> in Lagos, Nigeria</p>
+          <p>© 2020 TrendZ. All rights reserved.</p>
+          <p>Made with <span className="text-cyan-400">▲</span> in Abuja, Nigeria</p>
         </div>
       </div>
     </footer>
