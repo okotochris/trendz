@@ -23,18 +23,16 @@ export default function Footer() {
             </p>
 
             <div className="flex gap-4 mt-8">
-              <a href="https://x.com/okotochris" className="text-gray-500 hover:text-cyan-400 transition">
+              <a href="https://x.com/okotochris" target="_blank" className="text-gray-500 hover:text-cyan-400 transition">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-cyan-400 transition">
+              {/* <a href="#" className="text-gray-500 hover:text-cyan-400 transition">
                 <Instagram size={20} />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-cyan-400 transition">
+              </a> */}
+              <a href="https://facebook.com/trendzbykate" target="_blank" className="text-gray-500 hover:text-cyan-400 transition">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-cyan-400 transition">
-                <Youtube size={20} />
-              </a>
+             
             </div>
           </div>
 
