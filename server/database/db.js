@@ -1,4 +1,7 @@
 const pg = require('pg')
+const createHoteldb = require('./hotel')
+const createFlightTable = require('./flight')
+const createNewsTable = require('./news')
 
 const isProduction = process.env.NODE_ENV === "production"
 const db =
@@ -20,8 +23,14 @@ new pg.Client({
 })
 db.connect()
 .then(result=>{
-    console.log("connected to database")
+    console.log("connected to database ✅")
+    createFlightTable()
+    createHoteldb()
+    createNewsTable()
 })
 .catch(err=>{
     console.log(err)
 })
+
+
+module.exports = db;
