@@ -6,19 +6,27 @@ const getBlogs = require("./utilities/getHotel")
 const saveFlightToDb = require('./utilities/getFlight')
 const fetchRandomFlight = require('./utilities/getFlight')
 const saveTrendingNews = require('./utilities/getNews')
+const cron = require("node-cron");
 const cors = require('cors')
 const app = express ()
 
 
 app.use(cors())
 app.use(router)
-
+function runTask() {
+  getBlogs()
+   saveFlightToDb()
+    saveTrendingNews()
+}
+cron.schedule("0 0,4,8,12,16 * * *", () => {
+  runTask();
+});
 
 const PORT = process.env.PORT 
 app.listen(PORT, ()=>{
     console.log(`Listening at ${PORT}`)
-   // getBlogs()
-   //saveFlightToDb()
- saveTrendingNews()
+   getBlogs()
+   saveFlightToDb()
+  saveTrendingNews()
 
 })
