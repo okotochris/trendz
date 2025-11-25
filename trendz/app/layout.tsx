@@ -104,9 +104,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="scroll-smooth">
      <head>
-      <link rel="icon" href="/logo.jpg" sizes="any" />
-      <link rel="icon" href="/logo.jpg" type="image/jpeg" />
-      <link rel="apple-touch-icon" href="/logo.jpg" />
+      <link rel="icon" href="/logo.png" sizes="any" />
+      <link rel="icon" href="/logo.png" type="image/jpeg" />
+      <link rel="apple-touch-icon" href="/logo.png" />
     </head>
 
 

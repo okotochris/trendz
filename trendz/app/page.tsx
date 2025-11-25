@@ -73,7 +73,7 @@ export default function Home() {
             <Link href="/news" className="px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl shadow-2xl hover:shadow-cyan-500/50 flex items-center gap-3">
               <Newspaper className="w-6 h-6" /> Latest News <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link href="/flights" className="px-10 py-5 bg-white border border-gray-200 rounded-2xl font-bold hover:shadow-2xl flex items-center gap-3">
+            <Link href="/flight" className="px-10 py-5 bg-white border border-gray-200 rounded-2xl font-bold hover:shadow-2xl flex items-center gap-3">
               <Plane className="w-6 h-6 text-blue-600" /> Book Flight
             </Link>
           </div>
@@ -139,7 +139,7 @@ export default function Home() {
                   >
                     <div className="flex items-center justify-center gap-4 mb-6">
                       {flight.airline_logo && (
-                        <img src={flight.airline_logo} alt={flight.airline_name} className="h-10" />
+                        <img src={'/logo.png'} alt={flight.airline_name} className="h-10" />
                       )}
                       <span className="text-lg font-bold">{flight.airline_name}</span>
                     </div>
@@ -150,7 +150,7 @@ export default function Home() {
                     <p className="text-xl mt-2 opacity-80">{flight.flight_number}</p>
 
                     <div className="my-6 text-5xl font-black">
-                      ₦{flight.price}
+                      ${flight.price}
                     </div>
 
                     <a
@@ -172,7 +172,7 @@ export default function Home() {
                 ))}
           </div>
 
-          <Link href="/flights" className="mt-20 inline-block px-16 py-6 bg-white text-blue-600 text-black text-2xl font-bold rounded-3xl hover:bg-blue-700 transition">
+          <Link href="/flight" className="mt-20 inline-block px-16 py-6 bg-white text-blue-600 text-black text-2xl font-bold rounded-3xl hover:bg-blue-700 transition">
             See All Flights
           </Link>
         </div>

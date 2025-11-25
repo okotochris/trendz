@@ -23,7 +23,7 @@ function Header() {
        
         <Link href="/" className="group">
           <h1 className=" flex items-center justify-center text-2xl font-black tracking-tight">
-             <img src="/logo.jpg" height="30px" width="50px" />
+             <img src="/logo.png" height="30px" width="50px" />
             <span className="pl-3 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-blue-400 transition-all duration-500">
               Trend
             </span>

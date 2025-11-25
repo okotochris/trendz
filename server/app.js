@@ -4,7 +4,6 @@ const db = require('./database/db')
 const router = require('./routes/routes')
 const getBlogs = require("./utilities/getHotel")
 const saveFlightToDb = require('./utilities/getFlight')
-const fetchRandomFlight = require('./utilities/getFlight')
 const saveTrendingNews = require('./utilities/getNews')
 const cron = require("node-cron");
 const cors = require('cors')
@@ -25,8 +24,4 @@ cron.schedule("0 0,4,8,12,16 * * *", () => {
 const PORT = process.env.PORT 
 app.listen(PORT, ()=>{
     console.log(`Listening at ${PORT}`)
-   getBlogs()
-   saveFlightToDb()
-  saveTrendingNews()
-
 })
