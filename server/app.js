@@ -25,5 +25,5 @@ cron.schedule("0 0,4,8,12,16 * * *", () => {
 const PORT = process.env.PORT 
 app.listen(PORT, async ()=>{
     console.log(`Listening at ${PORT}`)
-   
+   iterateOverArticles()
 })

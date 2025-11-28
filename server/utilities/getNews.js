@@ -58,8 +58,6 @@ async function saveTrendingNews() {
         ]
       );
     }
-
-    console.log(`${articles.length} news articles saved ✅`);
   } catch (err) {
     console.error("Error saving news:", err);
   }
