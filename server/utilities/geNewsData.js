@@ -1,42 +1,118 @@
-const { EventRegistry, QueryArticlesIter } = require("eventregistry");
+// fetchAndSaveNews.js
+require('dotenv').config();
+const { EventRegistry, QueryArticlesIter, ReturnInfo, ArticleInfoFlags } = require("eventregistry");
+const db = require('../database/db'); // Adjust path if needed
 
-const apiKey = "833104698-c0a1-4b93-86ad-9e23bc51f07a"
-if (!apiKey) throw new Error("NEWSAPI_AI_KEY required.");
+// Use your real env variable name
+const apiKey = process.env.NEWSAPI_AI_KEY || process.env.EVENT_REGISTRY_API_KEY;
+if (!apiKey) {
+    throw new Error("Set NEWSAPI_AI_KEY or EVENT_REGISTRY_API_KEY in .env");
+}
 
 const er = new EventRegistry({ apiKey });
 
-async function fetchLatestNews() {
+async function fetchAndSaveNews() {
+    console.log("Fetching latest news from Event Registry...\n");
+
+    const q = new QueryArticlesIter(er, {
+        keywords: "news",           // Keeps free tier happy
+        sortBy: "date",
+        sortByAsc: false,
+        lang: ["eng"],
+        maxItems: 50,               // Pull more, we'll dedupe anyway
+        returnInfo: new ReturnInfo({
+            articleInfo: new ArticleInfoFlags({
+                body: true,         // Full article body when available
+                concepts: true,
+                categories: true,
+                image: true,        // For urltoimage
+                shares: true
+            })
+        })
+    });
+
+    let savedCount = 0;
+    let skippedCount = 0;
+
     try {
-        console.log("Fetching latest global news...\n");
+        for await (const article of q) {
+            const {
+                title,
+                url,
+                date: publishedAt,
+                source,
+                body: content = "",
+                summary: description = "",
+                image: urltoimage = "",
+                concepts = []
+            } = article;
 
-        const query = new QueryArticlesIter(er, {
-            sortBy: "date",
-            sortByAsc: false,         // newest first
-            lang: "eng",
-            dateStart: "2025-11-20",  // last 5–7 days recommended
-            maxItems: 20,
-            requestedResult: QueryArticlesIter.ARTICLE_INFO
-        });
+            // Clean & prepare data
+            const cleanTitle = title?.trim();
+            const cleanUrl = url?.trim();
+            const cleanSource = source?.title || "Unknown Source";
+            const cleanImage = urltoimage || "https://via.placeholder.com/400x200?text=No+Image"; // fallback
 
-        let i = 0;
-        for await (const article of query) {
-            i++;
+            if (!cleanTitle || !cleanUrl) {
+                skippedCount++;
+                continue;
+            }
 
-            console.log(`\n--- Article ${i} ---`);
-            console.log("Title:", article.title);
-            console.log("URL:", article.url);
-            console.log("Date:", article.date);
-            console.log("Source:", article.source?.title);
-            console.log("Summary:", (article.summary || "").slice(0, 200));
+            try {
+                await db.query(
+                    `INSERT INTO news (
+                        title, source, author, description, url, 
+                        urltoimage, content, publishedAt
+                    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                    ON CONFLICT (title) DO NOTHING`,  // Prevents duplicates
+                    [
+                        cleanTitle,
+                        cleanSource,
+                        null, // author usually not in Event Registry
+                        description?.slice(0, 1000) || null,
+                        cleanUrl,
+                        cleanImage,
+                        content?.slice(0, 10000) || null, // Limit size
+                        publishedAt
+                    ]
+                );
+
+                // Check if row was actually inserted
+                const { rowCount } = await db.query(
+                    `SELECT 1 FROM news WHERE title = $1 LIMIT 1`,
+                    [cleanTitle]
+                );
+
+                if (rowCount > 0) {
+                    console.log(`Saved: ${cleanTitle.substring(0, 60)}...`);
+                    savedCount++;
+                } else {
+                    skippedCount++;
+                }
+            } catch (dbErr) {
+                if (dbErr.code === '23505') { // Unique violation (fallback)
+                    skippedCount++;
+                } else {
+                    console.error("DB Error:", dbErr.message);
+                }
+            }
         }
 
-        if (i === 0) {
-            console.warn("\n❌ No recent articles returned — your API key may be rate-limited.");
+        console.log("\nFinished!");
+        console.log(`Saved: ${savedCount} new articles`);
+        console.log(`Skipped: ${skippedCount} (duplicates or invalid)`);
+        if (savedCount + skippedCount === 0) {
+            console.warn("Zero articles processed — check API key or internet");
         }
 
     } catch (err) {
-        console.error("❌ Error fetching latest news:", err.message);
+        console.error("Event Registry API Error:", err.message);
     }
 }
 
-module.exports = fetchLatestNews;
+// Run directly if called with node fetchAndSaveNews.js
+if (require.main === module) {
+    fetchAndSaveNews().catch(console.error);
+}
+
+module.exports = fetchAndSaveNews;

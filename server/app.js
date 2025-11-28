@@ -15,15 +15,15 @@ app.use(cors())
 app.use(router)
 function runTask() {
   getBlogs()
-   saveFlightToDb()
-    saveTrendingNews()
+  saveFlightToDb()
+  iterateOverArticles()
 }
 cron.schedule("0 0,4,8,12,16 * * *", () => {
   runTask();
 });
 
 const PORT = process.env.PORT 
-app.listen(PORT, ()=>{
+app.listen(PORT, async ()=>{
     console.log(`Listening at ${PORT}`)
-    iterateOverArticles()
+   
 })
