@@ -3,14 +3,12 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-// Google Font (Inter)
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
-// SEO + Metadata
 export const metadata: Metadata = {
   title: {
     default: "TrendZ – Real-Time News, Flight & Hotel Booking in Nigeria & Africa",
@@ -74,15 +72,12 @@ export const metadata: Metadata = {
     },
   },
 
-  verification: {
-    google: "your-google-site-verification-code-here",
-  },
-
   alternates: {
     canonical: "https://trendz.africa",
   },
 
   manifest: "/manifest.json",
+
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-32x32.png",
@@ -90,7 +85,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Viewport for mobile SEO & PWA
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -99,16 +93,28 @@ export const viewport: Viewport = {
   colorScheme: "dark light",
 };
 
-// Root layout
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-     <head>
-      <link rel="icon" href="/logo.png" sizes="any" />
-      <link rel="icon" href="/logo.png" type="image/jpeg" />
-      <link rel="apple-touch-icon" href="/logo.png" />
-    </head>
+      <head>
+        {/* Your icons */}
+        <link rel="icon" href="/logo.png" sizes="any" />
+        <link rel="icon" href="/logo.png" type="image/jpeg" />
+        <link rel="apple-touch-icon" href="/logo.png" />
 
+        {/* ✅ Google AdSense Meta Verification */}
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-5022855407701372"
+        />
+
+        {/* ✅ AdSense Script (Required) */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5022855407701372"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
 
       <body
         className={`${inter.variable} antialiased bg-white text-gray-900 dark:bg-gray-950 dark:text-white`}
