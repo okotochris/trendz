@@ -2,10 +2,10 @@
 
 import Footer from "@/app/component/footer";
 import Header from "@/app/component/header";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { FaWhatsapp, FaFacebook, FaTwitter, FaCopy } from "react-icons/fa";
 
 const server = process.env.NEXT_PUBLIC_API_URL;
 
@@ -111,35 +111,39 @@ export default function NewsDetail() {
     </section>
 
       {/* FLOATING SHARE BAR */}
-      <div className="fixed top-1/2 left-4 -translate-y-1/2 hidden lg:flex flex-col gap-3 z-50">
-        <a
-          href={share.whatsapp}
-          target="_blank"
-          className="bg-green-600 text-white px-4 py-2 rounded-full"
-        >
-          WA
-        </a>
-        <a
-          href={share.twitter}
-          target="_blank"
-          className="bg-black text-white px-4 py-2 rounded-full"
-        >
-          X
-        </a>
-        <a
-          href={share.facebook}
-          target="_blank"
-          className="bg-blue-600 text-white px-4 py-2 rounded-full"
-        >
-          FB
-        </a>
-        <button
-          onClick={copyLink}
-          className="bg-gray-700 text-white px-4 py-2 rounded-full"
-        >
-          Copy
-        </button>
-      </div>
+<div className="fixed top-1/2 left-4 -translate-y-1/2 flex flex-col gap-3 z-50">
+  <a
+    href={share.whatsapp}
+    target="_blank"
+    className="bg-green-600 text-white px-4 py-2 rounded-full"
+  >
+    <FaWhatsapp />
+  </a>
+
+  <a
+    href={share.twitter}
+    target="_blank"
+    className="bg-black text-white px-4 py-2 rounded-full"
+  >
+    <FaTwitter />
+  </a>
+
+  <a
+    href={share.facebook}
+    target="_blank"
+    className="bg-blue-600 text-white px-4 py-2 rounded-full"
+  >
+    <FaFacebook />
+  </a>
+
+  <button
+    onClick={copyLink}
+    className="bg-gray-700 text-white px-4 py-2 rounded-full"
+  >
+    <FaCopy />
+  </button>
+</div>
+
 
       {/* ARTICLE CONTENT */}
       <section className="max-w-3xl mx-auto px-5 py-16">
@@ -171,8 +175,8 @@ export default function NewsDetail() {
               href={`/news/${news.id}`}
               className="bg-white rounded-lg shadow hover:shadow-xl transition overflow-hidden"
             >
-              <div className="relative w-full h-48">
               <div className="relative w-full h-64">
+              <div className="relative w-full h-60">
               <img
                 src={news.urltoimage}
                 alt={news.title}
