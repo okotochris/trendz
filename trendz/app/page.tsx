@@ -25,7 +25,7 @@ export default function Home() {
         setHotels(data.hotel || []);
         setFlights(data.flight || []);  // Your real flights
         setNews(data.news || []);  
-        console.log(data.news)     // Optional: or fetch from NewsAPI.ai
+       
       } catch (err) {
         console.error(err);
       } finally {

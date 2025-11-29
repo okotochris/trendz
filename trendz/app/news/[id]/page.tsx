@@ -23,7 +23,6 @@ export default function NewsDetail() {
 
   // Fetch article + related
   useEffect(() => {
-    console.log(id)
     const fetchData = async () => {
       try {
         const res = await fetch(`${server}/api/news/${id}`);

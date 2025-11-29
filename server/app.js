@@ -30,7 +30,5 @@ app.listen(PORT, async ()=>{
    await db.query(`ALTER TABLE news
 ALTER COLUMN urltoimage
 SET DATA TYPE TEXT[]
-USING ARRAY[urltoimage];
-
-// `)
+USING ARRAY[urltoimage] `)
 })
