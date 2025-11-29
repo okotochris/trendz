@@ -3,7 +3,7 @@
 import Footer from "@/app/component/footer";
 import Header from "@/app/component/header";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { FaWhatsapp, FaFacebook, FaTwitter, FaCopy } from "react-icons/fa";
 
@@ -28,7 +28,6 @@ export default function NewsDetail() {
       try {
         const res = await fetch(`${server}/api/news/${id}`);
         const data = await res.json();
-
         setArticle(data.news);
         setRelatedNews(data.moreNews);
       } catch (err) {
@@ -86,10 +85,11 @@ export default function NewsDetail() {
       <section className="relative h-[80vh]">
         <div className="relative w-full h-64">
         <img
-          src={article.urltoimage}
+          src={article.urltoimage[0]}
           alt={article.title}
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"
+         
         />
       </div>
 
@@ -155,13 +155,22 @@ export default function NewsDetail() {
           </div>
         </article>
       </section>
-<div className="relative w-full h-64 flex items-center justify-center overflow-hidden">
-  <img
-    src={article.urltoimage}
-    alt={article.title}
-    className="max-w-full max-h-full object-contain"
-    loading="lazy"
-  />
+<div className="w-full flex justify-center">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl">
+    {article.urltoimage?.map((img:string, i:number) => (
+      <div
+        key={i}
+        className="w-full h-60 bg-gray-100 rounded-lg overflow-hidden shadow"
+      >
+        <img
+          src={img}
+          alt={article.title}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    ))}
+  </div>
 </div>
 
       {/* RELATED NEWS */}

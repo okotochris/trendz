@@ -8,7 +8,7 @@ async function createNews(){
         author TEXT,
         description TEXT,
         url TEXT,
-        urltoimage TEXT NOT NULL,
+        urltoimage TEXT[] NOT NULL,
         content TEXT,
         publishedAt TEXT,
         create_at TIMESTAMP DEFAULT NOW()

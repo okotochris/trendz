@@ -179,7 +179,6 @@ router.get("/api/news", async (req, res) => {
 router.get('/api/news/:id', async (req, res) => {
   try {
     const id = req.params.id; 
-    // Fetch selected news + random related news
     const [newsRes, moreNewsRes] = await Promise.all([
       db.query('SELECT * FROM news WHERE id = $1', [id]),
 

@@ -7,9 +7,6 @@ import Header from "./component/header";
 import Footer from "./component/footer";
 import { useEffect, useState } from "react";
 import HotelGrid from "./component/hotels";
-
-
-
 const server = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Home() {
@@ -92,13 +89,12 @@ export default function Home() {
               : news.slice(0, 3).map((article: any, i: number) => (
                   <a
                     href={`/news/${article.id}`}
-                    target="_blank"
                     key={i}
                     className="group block relative h-96 rounded-3xl overflow-hidden shadow-2xl"
                   >
                         {article.urltoimage ? (
                           <img
-                            src={article.urltoimage}
+                            src={article.urltoimage[0]}
                             alt={article.title}
                             className="w-full h-full object-cover rounded-3xl"
                           />
