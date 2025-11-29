@@ -27,10 +27,10 @@ cron.schedule("0 0,4,8,12,16 * * *", () => {
 const PORT = process.env.PORT 
 app.listen(PORT, async ()=>{
     console.log(`Listening at ${PORT}`)
-//    await db.query(`ALTER TABLE news
-// ALTER COLUMN urltoimage
-// SET DATA TYPE TEXT[]
-// USING ARRAY[urltoimage];
+   await db.query(`ALTER TABLE news
+ALTER COLUMN urltoimage
+SET DATA TYPE TEXT[]
+USING ARRAY[urltoimage];
 
 // `)
 })
