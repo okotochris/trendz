@@ -4,7 +4,6 @@ const db = require('./database/db')
 const router = require('./routes/routes')
 const getBlogs = require("./utilities/getHotel")
 const saveFlightToDb = require('./utilities/getFlight')
-const saveTrendingNews = require('./utilities/getNews')
 const iterateOverArticles = require('./utilities/geNewsData')
 const uploadRoute = require('./routes/newsUploadRoute')
 const cron = require("node-cron");

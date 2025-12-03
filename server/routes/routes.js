@@ -203,7 +203,14 @@ router.get('/api/news/:id', async (req, res) => {
     res.status(500).json({ error: "Failed to fetch news" });
   }
 });
-
- 
+router.get('/api/sitemap_id', async(req, res)=>{
+    try {
+      const result = await db.query('SELECT id FROM news')
+      res.status(200).json(result.rows)
+    } catch (err) {
+      res.status(500).json({msg:"server error"})
+      console.log(err)
+    }
+})
 
 module.exports = router
