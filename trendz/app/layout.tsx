@@ -73,7 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5022855407701372"
           crossOrigin="anonymous"
         ></script>
-
+        <meta name="p:domain_verify" content="0a4951710a0c2c6e11db78d078df52bb"/>
         {/* Force www + https redirect (Next.js middleware will handle this) */}
         <link rel="canonical" href="https://www.trendz.ng" />
       </head>
