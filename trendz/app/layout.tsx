@@ -67,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Critical: Must match EXACTLY what you entered in AdSense */}
         <meta name="google-adsense-account" content="ca-pub-5022855407701372" />
-        
+        <meta name="monetag" content="9d939e2218565f188809785e5231a094"></meta>
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5022855407701372"
