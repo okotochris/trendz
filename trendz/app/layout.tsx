@@ -80,35 +80,13 @@ export default function RootLayout({
           name="google-adsense-account"
           content="ca-pub-5022855407701372"
         />
-        <meta
-          name="monetag"
-          content="9d939e2218565f188809785e5231a094"
-        />
+  
         <meta
           name="p:domain_verify"
           content="0a4951710a0c2c6e11db78d078df52bb"
         />
 
-        {/* Google AdSense */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5022855407701372"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-
-        {/* Monetag Script (AFTER <head>) */}
-        <Script id="monetag" strategy="afterInteractive">
-          {`
-            (function(s){
-              s.dataset.zone='10319176';
-              s.src='https://nap5k.com/tag.min.js';
-            })([document.documentElement, document.body]
-              .filter(Boolean)
-              .pop()
-              .appendChild(document.createElement('script')));
-          `}
-        </Script>
+       
       </head>
 
       <body>{children}</body>
