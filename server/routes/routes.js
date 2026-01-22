@@ -182,7 +182,7 @@ router.get('/api/news/:id', async (req, res) => {
     const [newsRes, moreNewsRes] = await Promise.all([
       db.query('SELECT * FROM news WHERE id = $1', [id]),
 
-      // Randomize the moreNews by ordering randomly
+      // Randomize the moreNews by ordering randomly and item
       db.query(`SELECT * FROM news 
                 WHERE id <> $1 
                 ORDER BY RANDOM() 

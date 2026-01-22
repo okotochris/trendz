@@ -78,7 +78,7 @@ export default function AboutPage() {
             <div className="relative h-96 rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/founder.jpg"
-                alt="TrendZ Team Working"
+                alt="TrendZ Team"
                 fill
                 className="object-cover"
               />
