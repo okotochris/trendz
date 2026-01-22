@@ -55,7 +55,7 @@ router.get('/api/hotels', async (req, res) => {
         ranking,
         web_url
        FROM hotels 
-       ORDER BY ranking ASC NULLS LAST, name ASC
+       ORDER BY id DESC
        LIMIT $1 OFFSET $2`,
       [limit, offset]
     );
@@ -147,7 +147,7 @@ router.get("/api/news", async (req, res) => {
     const result = await db.query(
       `SELECT *
        FROM news
-       ORDER BY "publishedat" DESC
+       ORDER BY id DESC
        LIMIT $1 OFFSET $2`,
       [PAGE_SIZE, offset]
     );

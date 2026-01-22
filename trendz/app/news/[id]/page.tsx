@@ -147,9 +147,9 @@ export default function NewsDetail() {
       {/* ARTICLE CONTENT */}
       <section className="max-w-3xl mx-auto px-5 py-16">
         <article className="bg-white p-6 md:p-10 rounded-2xl shadow-xl -mt-24">
-          <div className="space-y-6 text-gray-800 text-lg">
+          <div className="space-y-6 text-gray-800 text-lg" style={{ whiteSpace: "pre-line"}}>
             
-              <p>{article.content}</p>
+              {article.content}
         
           </div>
         </article>

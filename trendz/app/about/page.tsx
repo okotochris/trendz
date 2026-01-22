@@ -40,11 +40,11 @@ export default function AboutPage() {
                 <p className="text-5xl font-black text-white">54</p>
                 <p className="text-gray-300 text-lg">Countries Covered</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 text-center">
+              {/* <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 text-center">
                 <Users className="w-16 h-16 text-purple-400 mx-auto mb-4" />
                 <p className="text-5xl font-black text-white">2.8M+</p>
                 <p className="text-gray-300 text-lg">Monthly Users</p>
-              </div>
+              </div> */}
               <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 text-center">
                 <Zap className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
                 <p className="text-5xl font-black text-white">24/7</p>

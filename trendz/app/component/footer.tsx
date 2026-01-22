@@ -40,7 +40,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-5">Explore</h3>
             <ul className="space-y-3">
-              {['Home', 'News', 'Hotels', 'Flights', 'Destinations', 'About Us'].map((item) => (
+              {['Home', 'News', 'Hotels', 'Flight', 'About'].map((item) => (
                 <li key={item}>
                   <Link
                     href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
