@@ -11,7 +11,7 @@ const server = process.env.NEXT_PUBLIC_API_URL;
 interface Article {
   id: number;
   title: string;
-  urltoimage?: string;
+  urltoimage: string[];
   excerpt?: string;
   timeAgo?: string;
   readTime?: string;
@@ -78,7 +78,7 @@ export default function NewsPage() {
       {featured && (
         <section className="relative h-screen flex items-end pb-32 overflow-hidden">
           <img
-            src={featured.urltoimage || "/placeholder-news.jpg"}
+            src={featured.urltoimage[0] || "/placeholder-news.jpg"}
             alt={featured.title}
             className="absolute inset-0 w-full h-full object-cover brightness-50"
           />
@@ -134,14 +134,14 @@ export default function NewsPage() {
                 <div ref={isLast ? lastArticleRef : null}>
                 <Link
                   href={`/news/${article.id}`}
-                  key={article.id}
+                  key={i}
                   
                   className="group block transform transition-all duration-700 hover:-translate-y-4"
                 >
                   <article className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100">
                     <div className="relative h-64 overflow-hidden">
                       <img
-                        src={article.urltoimage || "/placeholder-news.jpg"}
+                        src={article.urltoimage[0] || "/placeholder-news.jpg"}
                         alt={article.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                       />
