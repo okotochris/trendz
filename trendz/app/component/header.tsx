@@ -18,7 +18,7 @@ function Header() {
   ];
 
   return (
-    <header className="border-b border-cyan-900/30 bg-black/80 backdrop-blur-xl sticky top-0 z-50">
+    <header className=" border-b border-cyan-900/30 bg-black/80 backdrop-blur-xl sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center px-6 py-5">
        
         <Link href="/" className="group">
@@ -90,9 +90,7 @@ function Header() {
           </nav>
         </div>
       )}
-      <div className='h-14'>
-
-      </div>
+    
     </header>
   );
 }
