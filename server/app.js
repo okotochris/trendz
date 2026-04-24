@@ -15,9 +15,10 @@ app.use(cors())
 app.use(router)
 app.use(uploadRoute)
 function runTask() {
-  getBlogs()
+  //getBlogs()
   saveFlightToDb()
   iterateOverArticles()
+
 }
 cron.schedule("0 0,4,8,12,16 * * *", () => {
   runTask();
@@ -26,4 +27,10 @@ cron.schedule("0 0,4,8,12,16 * * *", () => {
 const PORT = process.env.PORT 
 app.listen(PORT, async ()=>{
     console.log(`Listening at ${PORT}`)
+      db.query(`DELETE FROM news WHERE create_at < NOW() - INTERVAL '4 months'`)
+      .then(result=>{
+        console.log('deleted')
+      }).catch(err=>{
+        console.log(err)
+      })
 })

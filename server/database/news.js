@@ -1,7 +1,7 @@
 async function createNews(){
     const db = require('./db');
     try {
-         db.query(`CREATE TABLE IF NOT EXISTS news(
+        db.query(`CREATE TABLE IF NOT EXISTS news(
         id SERIAL PRIMARY KEY,
         title TEXT UNIQUE,
         source TEXT,
