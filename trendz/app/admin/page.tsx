@@ -85,16 +85,16 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen bg-gray-300 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-300 flex items-center justify-center ">
         <div className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md">
-          <h1 className="text-3xl font-bold mb-6 text-center">Admin Login</h1>
+          <h1 className="text-3xl font-bold mb-6 text-center text-black">Admin Login</h1>
           <form onSubmit={handleLogin}>
             <input
               type="password"
               placeholder="Enter admin password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-4 border rounded-lg text-lg "
+              className="w-full p-4 border rounded-lg text-lg text-gray-500 "
               required
             />
             <button
@@ -112,9 +112,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-300 py-10">
+      <div className="min-h-screen bg-gray-300 dark:bg-gray-700 py-10">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white rounded-2xl shadow-xl p-8">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8">
             <div className="flex justify-between items-center mb-8">
               <h1 className="text-4xl font-bold text-gray-800">Admin – Post News</h1>
               <button
