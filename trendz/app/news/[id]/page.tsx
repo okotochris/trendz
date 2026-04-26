@@ -143,13 +143,13 @@ export default async function NewsDetailPage({
 
   </div>
 
-  </section>
+</section>
 
-        {/* SOCIAL SHARE BUTTONS */}
-  <NewsDetailClient
-          title={article.title}
-          description={article.description}
-        />
+      {/* SOCIAL SHARE BUTTONS */}
+<NewsDetailClient
+        title={article.title}
+        description={article.description}
+      />
 
       {/* ARTICLE BODY */}
       {/* ARTICLE BODY (EDITORIAL STYLE) */}
