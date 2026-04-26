@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-
 import Header from "@/app/component/header";
 import Footer from "@/app/component/footer";
 import NewsDetailClient from "./NewsDetailClient";
@@ -119,56 +117,82 @@ export default async function NewsDetailPage({
       <Header />
 
       {/* HERO */}
-      <section className="relative h-[80vh]">
-        <div className="relative w-full h-64">
-          <img
-            src={article.urltoimage?.[0]}
-            alt={article.title}
-            className="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
+      <section className="relative h-[85vh] min-h-[600px] overflow-hidden">
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+    <img
+      src={article.urltoimage?.[0]}
+      alt={article.title}
+      className="absolute inset-0 w-full h-full object-cover scale-105"
+    />
 
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 max-w-4xl w-full px-5 text-white">
+  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
 
-          <span className="bg-red-600 px-4 py-1 text-sm rounded-full uppercase">
-            {article.category}
-          </span>
+  <div className="absolute bottom-20 left-1/2 -translate-x-1/2 max-w-5xl w-full px-6 text-white">
 
-          <h1 className="text-3xl md:text-5xl font-extrabold mt-4">
-            {article.title}
-          </h1>
+    <span className="bg-red-600 px-5 py-2 rounded-full text-sm uppercase">
+      {article.category}
+    </span>
 
-          <p className="mt-4 text-gray-300">
-            {article.author} • {article.publishedat}
-          </p>
+    <h1 className="text-4xl md:text-6xl font-black mt-6 leading-tight">
+      {article.title}
+    </h1>
 
-        </div>
-      </section>
+    <p className="mt-5 text-gray-300 text-lg">
+      {article.author} • {article.publishedat}
+    </p>
 
-      {/* SOCIAL SHARE BUTTONS */}
-      <NewsDetailClient
-        title={article.title}
-        description={article.description}
-      />
+  </div>
+
+  </section>
+
+        {/* SOCIAL SHARE BUTTONS */}
+  <NewsDetailClient
+          title={article.title}
+          description={article.description}
+        />
 
       {/* ARTICLE BODY */}
-      <section className="max-w-3xl mx-auto px-5 py-16">
-        <article className="bg-white p-6 md:p-10 rounded-2xl shadow-xl -mt-24">
+      {/* ARTICLE BODY (EDITORIAL STYLE) */}
+<section className="max-w-5xl mx-auto px-6 py-16">
 
-          <div
-            className="space-y-6 text-gray-800 text-lg"
-            style={{ whiteSpace: "pre-line" }}
-          >
-            {article.content}
+  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+    {/* MAIN ARTICLE */}
+    <article className="lg:col-span-8">
+
+      <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10">
+
+        {/* LEAD TEXT */}
+        <div className="text-lg leading-relaxed text-gray-800 space-y-6">
+
+          {article.content}
+
+        </div>
+
+      </div>
+
+    </article>
+
+        {/* SIDEBAR (optional structure for later ads/related widgets) */}
+        <aside className="lg:col-span-4 space-y-6">
+
+          <div className="bg-white rounded-2xl shadow p-5">
+            <h3 className="font-semibold text-lg mb-3">
+              Story Highlights
+            </h3>
+
+            <ul className="space-y-2 text-sm text-gray-600">
+              <li>• Breaking coverage updated live</li>
+              <li>• Verified sources included</li>
+              <li>• Multimedia supported article</li>
+            </ul>
           </div>
 
-        </article>
-      </section>
+        </aside>
 
-      {/* IMAGE GALLERY */}
+      </div>
+    </section>
+          {/* IMAGE GALLERY */}
       <div className="w-full flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl">
 
@@ -190,46 +214,15 @@ export default async function NewsDetailPage({
       </div>
 
       {/* RELATED NEWS */}
-      <section className="max-w-6xl mx-auto px-6 pb-20">
+      <div className="text-lg leading-relaxed text-gray-800 space-y-8">
 
-        <h2 className="text-2xl font-bold mb-8">
-          Related News
-        </h2>
+  {relatedNews?.map((block: string, i: number) => (
+    <p key={i} className="leading-8">
+      {block}
+    </p>
+  ))}
 
-        <div className="grid md:grid-cols-3 gap-6">
-
-          {relatedNews.map((news: any) => (
-            <Link
-              key={news.id}
-              href={`/news/${news.id}`}
-              className="bg-white rounded-lg shadow hover:shadow-xl transition overflow-hidden"
-            >
-              <div className="relative w-full h-60">
-                <img
-                  src={news.urltoimage}
-                  alt={news.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-
-              <div className="p-5">
-
-                <h3 className="font-semibold text-lg mb-2">
-                  {news.title}
-                </h3>
-
-                <p className="text-sm text-gray-600 line-clamp-3">
-                  {news.description}
-                </p>
-
-              </div>
-            </Link>
-          ))}
-
-        </div>
-
-      </section>
+</div>
 
       <Footer />
     </main>
