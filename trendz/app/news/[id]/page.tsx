@@ -111,29 +111,29 @@ export default function NewsDetail() {
 
       {/* FLOATING SHARE BAR */}
 <div className="fixed top-1/2 left-4 -translate-y-1/2 flex flex-col gap-3 z-50">
-  <a
+  <Link
     href={share.whatsapp}
     target="_blank"
     className="bg-green-600 text-white px-4 py-2 rounded-full"
   >
     <FaWhatsapp />
-  </a>
+  </Link>
 
-  <a
+  <Link
     href={share.twitter}
     target="_blank"
     className="bg-black text-white px-4 py-2 rounded-full"
   >
     <FaTwitter />
-  </a>
+  </Link>
 
-  <a
+  <Link
     href={share.facebook}
     target="_blank"
     className="bg-blue-600 text-white px-4 py-2 rounded-full"
   >
     <FaFacebook />
-  </a>
+  </Link>
 
   <button
     onClick={copyLink}
