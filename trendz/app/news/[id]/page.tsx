@@ -113,6 +113,7 @@ export default async function NewsDetailPage({
 
   const article = data.news;
   const relatedNews = data.moreNews || [];
+  console.log(relatedNews)
 
   return (
     <main className="bg-[#f8f9fa] min-h-screen">
@@ -192,7 +193,7 @@ export default async function NewsDetailPage({
       {/* RELATED NEWS */}
       <section className="max-w-6xl mx-auto px-6 pb-20">
 
-        <h2 className="text-2xl font-bold mb-8">
+        <h2 className="text-2xl font-bold mb-8 text-black">
           Related News
         </h2>
 
@@ -206,7 +207,7 @@ export default async function NewsDetailPage({
             >
               <div className="relative w-full h-60">
                 <img
-                  src={news[0].urltoimage}
+                  src={news[0]?.urltoimage}
                   alt={news.title}
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
