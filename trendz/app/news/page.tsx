@@ -132,51 +132,52 @@ export default function NewsPage() {
               const isLast = i === restArticles.length - 1;
               return (
                 <div ref={isLast ? lastArticleRef : null}>
-                <Link
-                  href={`/news/${article.id}`}
-                  key={i}
-                  
-                  className="group block transform transition-all duration-700 hover:-translate-y-4"
-                >
-                  <article className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100">
-                    <div className="relative h-64 overflow-hidden">
-                      <img
-                        src={article.urltoimage[0] || "/placeholder-news.jpg"}
-                        alt={article.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                      />
-                      {article.live && (
-                        <div className="absolute top-4 right-4 bg-red-600 text-white px-5 py-2 rounded-full text-sm font-bold animate-pulse shadow-lg">
-                          LIVE
-                        </div>
-                      )}
-                      {article.category && (
-                        <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md border border-white/30 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                          {article.category}
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-8">
-                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                        <span className="font-medium text-gray-700">{article.timeAgo || "Just now"}</span>
-                        <span>•</span>
-                        <span>{article.readTime || "4 min read"}</span>
+                  <Link
+                    href={`/news/${article.id}`}
+                    key={i}
+
+                    className="group block transform transition-all duration-700 hover:-translate-y-4"
+                  >
+                    <article className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                      <div className="relative h-64 overflow-hidden">
+                        <img
+                          src={article.urltoimage[0] || "/placeholder-news.jpg"}
+                          alt={article.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                        />
+                        {article.live && (
+                          <div className="absolute top-4 right-4 bg-red-600 text-white px-5 py-2 rounded-full text-sm font-bold animate-pulse shadow-lg">
+                            LIVE
+                          </div>
+                        )}
+                        {article.category && (
+                          <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md border border-white/30 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            {article.category}
+                          </div>
+                        )}
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition line-clamp-2 mb-4">
-                        {article.title}
-                      </h3>
-                      <p className="text-gray-600 line-clamp-3 mb-6">
-                        {article.excerpt || "Click to read the full story"}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-blue-600 font-bold text-lg flex items-center gap-3 group-hover:gap-5 transition">
-                          Read More <ArrowRight className="w-5 h-5" />
-                        </span>
+                      <div className="p-8">
+                        <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                          <span className="font-medium text-gray-700">{article.timeAgo || "Just now"}</span>
+                          <span>•</span>
+                          <span>{article.readTime || "4 min read"}</span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition line-clamp-2 mb-4">
+                          {article.title}
+                        </h3>
+                        <p className="text-gray-600 line-clamp-3 mb-6">
+                          {article.excerpt || "Click to read the full story"}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-blue-600 font-bold text-lg flex items-center gap-3 group-hover:gap-5 transition">
+                            Read More <ArrowRight className="w-5 h-5" />
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </article>
-                </Link>
+                    </article>
+                  </Link>
                 </div>
+
               );
             })}
           </div>

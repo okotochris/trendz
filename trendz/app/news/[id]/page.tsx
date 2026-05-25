@@ -207,7 +207,7 @@ export default async function NewsDetailPage({
             >
               <div className="relative w-full h-60">
                 <img
-                  src={news[0]?.urltoimage}
+                  src={news.urltoimage[0]}
                   alt={news.title}
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
