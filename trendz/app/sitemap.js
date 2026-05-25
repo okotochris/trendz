@@ -5,6 +5,10 @@ export default async function sitemap() {
   let posts = [];
   try {
     const res = await fetch(`https://passionate-balance-production.up.railway.app/api/sitemap_id`);
+    if(!res.ok){
+      console.log("error")
+      return
+    }
     posts = await res.json();
   } catch (error) {
     console.error("❌ Failed to fetch posts for sitemap:", error);

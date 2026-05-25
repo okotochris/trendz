@@ -1,7 +1,6 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -12,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "TrendZ – Real-Time News, Flight & Hotel Booking in Nigeria & Africa",
+    default: "TrendZ – Real-Time and updatd News, Flight & Hotel Booking in Nigeria & Africa",
     template: "%s | TrendZ Africa",
   },
   description:
