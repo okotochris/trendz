@@ -1,8 +1,10 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
+// Correctly calling the Inter function (lowercase variable)
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -11,7 +13,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "TrendZ – Real-Time and updatd News, Flight & Hotel Booking in Nigeria & Africa",
+    default: "TrendZ – Real-Time and updated News, Flight & Hotel Booking in Nigeria & Africa",
     template: "%s | TrendZ Africa",
   },
   description:
@@ -79,16 +81,17 @@ export default function RootLayout({
           name="google-adsense-account"
           content="ca-pub-5022855407701372"
         />
-  
         <meta
           name="p:domain_verify"
           content="0a4951710a0c2c6e11db78d078df52bb"
         />
-
-       
       </head>
 
-      <body>{children}</body>
+      <body>
+        {children}
+      </body>
+      {/* Official Next.js Google Analytics integration */}
+      <GoogleAnalytics gaId="G-3W7WLKDZM8" />
     </html>
   );
 }

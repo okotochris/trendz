@@ -138,7 +138,7 @@ export default async function NewsDetailPage({
             {article.category}
           </span>
 
-          <h1 className="text-3xl md:text-5xl font-extrabold mt-4">
+          <h1 className="text-3xl md:text-5xl font-extrabold mt-4 text-bold ">
             {article.title}
           </h1>
 
