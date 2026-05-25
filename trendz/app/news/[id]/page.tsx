@@ -198,9 +198,9 @@ export default async function NewsDetailPage({
 
         <div className="grid md:grid-cols-3 gap-6">
 
-          {relatedNews.map((news: any) => (
+          {relatedNews.map((news: any, i:number) => (
             <Link
-              key={news.id}
+              key={i}
               href={`/news/${news.id}`}
               className="bg-white rounded-lg shadow hover:shadow-xl transition overflow-hidden"
             >
